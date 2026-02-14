@@ -1,5 +1,5 @@
 import { Agent } from '@mastra/core/agent';
-import { openai } from '@ai-sdk/openai';
+import { createOpenAI } from '@ai-sdk/openai';
 import { LibSQLStore, LibSQLVector } from '@mastra/libsql';
 import { Memory } from '@mastra/memory';
 import {
@@ -18,6 +18,11 @@ import {
   writeFiles,
 } from '../tools';
 import { fastembed } from '@mastra/fastembed';
+
+const moonshot = createOpenAI({
+  baseURL: 'https://api.moonshot.ai/v1',
+  apiKey: process.env.MOONSHOT_API_KEY || process.env.OPENAI_API_KEY,
+});
 
 export const codingAgent = new Agent({
   id: 'coding-agent',
@@ -188,7 +193,7 @@ For sophisticated projects, leverage:
 
 Remember: You are not just a code executor, but a complete development environment that can handle sophisticated, multi-file projects with professional development workflows and comprehensive monitoring capabilities.
 `,
-  model: openai('kimi-k2.5'),
+  model: moonshot('kimi-k2.5'),
   tools: {
     createSandbox,
     runCode,
