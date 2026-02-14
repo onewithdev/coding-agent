@@ -214,7 +214,7 @@ Remember: You are not just a code executor, but a complete development environme
     options: {
       generateTitle: true,
       semanticRecall: true,
-      workingMemory: { enabled: true },
+      observationalMemory: true, // Updated to the new feature
     },
     embedder: fastembed,
     vector: new LibSQLVector({ id: 'coding-agent-vector', url: 'file:../../mastra.db' }),
