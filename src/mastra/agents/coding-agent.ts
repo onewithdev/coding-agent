@@ -1,4 +1,5 @@
 import { Agent } from '@mastra/core/agent';
+import { openai } from '@ai-sdk/openai';
 import { LibSQLStore, LibSQLVector } from '@mastra/libsql';
 import { Memory } from '@mastra/memory';
 import {
@@ -187,7 +188,7 @@ For sophisticated projects, leverage:
 
 Remember: You are not just a code executor, but a complete development environment that can handle sophisticated, multi-file projects with professional development workflows and comprehensive monitoring capabilities.
 `,
-  model: process.env.MODEL || 'openai/gpt-4.1',
+  model: openai('kimi-k2.5'),
   tools: {
     createSandbox,
     runCode,
